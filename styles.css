@@ -1,0 +1,965 @@
+/* Alap stílusok */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(90deg, #0d47a1, #00acc1);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+header h2 {
+  margin-bottom: 10px;
+}
+
+.guest_alert {
+  color: lightcoral;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100%;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background-color: #3498db;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+nav a:hover {
+  background-color: #1e88e5;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+nav a.active {
+  background-color: #1565c0;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: #2980b9;
+}
+
+nav a.active {
+  background-color: #2980b9;
+  /* Aktív menüpont kiemelése */
+  font-weight: bold;
+}
+
+h3 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Játék kártyák (főoldal és admin_games) */
+.games-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.game-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border: 2px solid #00acc1;
+}
+
+.game-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.game-image img:hover {
+  transform: scale(1.05);
+}
+
+.game-image .no-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  color: #777;
+}
+
+.game-details {
+  padding: 20px;
+  flex-grow: 1;
+  /* Kitölti a rendelkezésre álló helyet */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.game-details h4 {
+  margin-bottom: 12px;
+  color: #2c3e50;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+.price {
+  font-weight: bold;
+  color: #27ae60;
+  margin: 10px 0;
+}
+
+.price-eur {
+  font-weight: bold;
+  color: #27ae60;
+  margin: 10px 0;
+}
+
+/* Gombok */
+.btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #2ecc71, #9cff57);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #27ae60, #76ff03);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background: #3498db;
+  /* Kék gomb */
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-cancel {
+  background: #95a5a6;
+  /* Szürke gomb */
+}
+
+.btn-cancel:hover {
+  background-color: #7f8c8d;
+}
+
+.btn-edit {
+  background: #f39c12;
+  /* Narancs gomb */
+}
+
+.btn-edit:hover {
+  background-color: #e67e22;
+}
+
+.btn-delete {
+  background: #e74c3c;
+  /* Piros gomb */
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.9em;
+}
+
+/* Admin felület általános konténer */
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Admin header (pl. Játékok kezelése + Új játék gomb) */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.content {
+  font-size: large;
+  background-color: lavender;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  /* Asztali nézeten lehet kicsit szélesebb */
+  max-width: 900px;
+  /* De ne nyúljon végtelenre */
+  margin: 0 auto 20px auto;
+  /* 0 auto a középre igazításhoz */
+  padding: 20px;
+  /* Belső térköz */
+}
+
+.about_us_btn {
+  border: 2px solid black;
+  background-color: #4bb878;
+  border-radius: 10px;
+  text-align: center;
+  width: auto;
+  max-width: 300px;
+  padding: 5px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Admin kártyák (admin_games.php) */
+.admin-card .admin-actions {
+  margin-top: auto;
+  /* Gombok alulra igazítása */
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  /* Gombok tördelése mobil nézetben */
+}
+
+/* Űrlapok (add_game, edit_game, login, register, booking) */
+.data-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group textarea,
+.status-select {
+  /* Select mező is */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+  box-sizing: border-box;
+  /* Fontos a padding miatt */
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-hint {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85em;
+  color: #777;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Kép előnézet (edit_game.php) */
+.image-preview {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.current-image-container {
+  margin-bottom: 15px;
+}
+
+.form-check {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-check-input {
+  width: auto;
+  /* Checkbox ne legyen 100% széles */
+  margin-right: 5px;
+}
+
+/* Üzenetek (alert) */
+.alert {
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+/* Táblázat (admin.php) */
+.table-container {
+  overflow-x: auto;
+  /* Vízszintes görgetés kis képernyőn */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  text-align: center;
+}
+
+table th {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.inline-form {
+  display: inline-flex;
+  /* Gombok és select egymás mellett */
+  gap: 5px;
+  align-items: center;
+}
+
+.status-select {
+  width: auto;
+  /* Select mező ne legyen 100% széles */
+  min-width: 120px;
+}
+
+/* Belépés/Regisztráció oldalak */
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+.auth-link {
+  margin-top: 20px;
+  font-size: 0.95em;
+}
+
+.auth-link a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+/* Reszponzív design */
+@media (max-width: 768px) {
+  .content {
+    width: 95%;
+    /* Mobilon majdnem teljes szélesség */
+  }
+
+  main iframe {
+    width: 100%;
+    /* Mindig töltse ki a tárolóját */
+    height: 300px;
+    /* Adjunk neki fix magasságot mobilon */
+    border-radius: 8px;
+    /* Illeszkedjen a dizájnhoz */
+  }
+
+  body {
+    padding: 15px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .games-container {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .admin-card .admin-actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .btn,
+  .btn-sm {
+    width: 100%;
+    text-align: center;
+  }
+
+  .data-form {
+    padding: 15px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  /* EREDETI (hibás) szabályok a foglalási táblához */
+  table td:nth-of-type(1)::before {
+    content: "ID";
+  }
+
+  table td:nth-of-type(2)::before {
+    content: "Játék";
+  }
+
+  table td:nth-of-type(3)::before {
+    content: "Felhasználó";
+  }
+
+  table td:nth-of-type(4)::before {
+    content: "Dátum";
+  }
+
+  table td:nth-of-type(5)::before {
+    content: "Állapot";
+  }
+
+  /* ... stb. ... */
+
+  /* JAVÍTÁS: Új, specifikus szabályok a felhasználói táblához */
+  .users-table td:nth-of-type(1)::before {
+    content: "ID";
+  }
+
+  .users-table td:nth-of-type(2)::before {
+    content: "Felhasználónév";
+  }
+
+  .users-table td:nth-of-type(3)::before {
+    content: "Email";
+  }
+
+  .users-table td:nth-of-type(4)::before {
+    content: "Szerep";
+  }
+
+  .users-table td:nth-of-type(5)::before {
+    content: "Regisztráció";
+  }
+
+  table,
+  .table-container {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* iOS smooth scrolling */
+  }
+
+  table thead {
+    display: none;
+    /* Fejléc elrejtése mobil nézetben */
+  }
+
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  table td {
+    display: flex;
+    text-align: left;
+    /* 1. JAVÍTÁS: A tartalom alapértelmezetten balra igazított a jobb olvashatóságért */
+    padding-left: 45%;
+    /* Kicsit csökkentjük a bal oldali margót, hogy a tartalomnak több helye legyen */
+    position: relative;
+    justify-content: space-between;
+    /* Ezt is beállítottuk */
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow-wrap: break-word;
+    /* 2. JAVÍTÁS: A hosszú, sortörés nélküli szavakat is megtöri, hogy ne lógjanak ki */
+    word-break: break-word;
+    /* Kompatibilitás régebbi böngészőkkel */
+  }
+
+  table td::before {
+    content: attr(data-label);
+    /* Ez a sor beolvassa a data-label attribútumot */
+    position: absolute;
+    left: 10px;
+    width: calc(45% - 20px);
+    /* Igazítjuk a szélességet a cella paddingjához */
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+
+    /* Ha egy cellának nincs data-label attribútuma, a content tulajdonságot felül lehet írni az nth-of-type selectorral */
+  }
+
+  /* Specifikus címkék a táblázat celláihoz */
+  table td:nth-of-type(1)::before {
+    content: "ID";
+  }
+
+  table td:nth-of-type(2)::before {
+    content: "Játék";
+  }
+
+  table td:nth-of-type(3)::before {
+    content: "Felhasználó";
+  }
+
+  table td:nth-of-type(4)::before {
+    content: "Dátum";
+  }
+
+  table td:nth-of-type(5)::before {
+    content: "Állapot";
+  }
+
+  table td:nth-of-type(6)::before {
+    content: "Megjegyzés";
+  }
+
+  table td:nth-of-type(7)::before {
+    content: "Műveletek";
+  }
+
+  .inline-form {
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+  }
+
+  .inline-form .btn {
+    width: auto;
+    /* Gombok ne legyenek 100% szélesek a táblázatban */
+    align-self: flex-end;
+  }
+
+  .status-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .games-container {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-content,
+  .auth-container {
+    padding: 15px;
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Background Animation */
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #4cb8b6;
+  overflow: hidden;
+  z-index: -1;
+  /* Ensure it's behind the content */
+}
+
+.ball {
+  position: absolute;
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  animation: move linear infinite;
+}
+
+.ball:nth-child(odd) {
+  color: #006d5b;
+}
+
+.ball:nth-child(even) {
+  color: #ff6f61;
+}
+
+.ball:nth-child(1) {
+  top: 77%;
+  left: 88%;
+  animation-duration: 40s;
+  animation-delay: -3s;
+  transform-origin: 16vw -2vh;
+  box-shadow: 40vmin 0 5.703076368487546vmin currentColor;
+}
+
+.ball:nth-child(2) {
+  top: 42%;
+  left: 2%;
+  animation-duration: 53s;
+  animation-delay: -29s;
+  transform-origin: -19vw 21vh;
+  box-shadow: -40vmin 0 5.17594621519026vmin currentColor;
+}
+
+.ball:nth-child(3) {
+  top: 28%;
+  left: 18%;
+  animation-duration: 49s;
+  animation-delay: -8s;
+  transform-origin: -22vw 3vh;
+  box-shadow: 40vmin 0 5.248179047256236vmin currentColor;
+}
+
+.ball:nth-child(4) {
+  top: 50%;
+  left: 79%;
+  animation-duration: 26s;
+  animation-delay: -21s;
+  transform-origin: -17vw -6vh;
+  box-shadow: 40vmin 0 5.279749632220298vmin currentColor;
+}
+
+.ball:nth-child(5) {
+  top: 46%;
+  left: 15%;
+  animation-duration: 36s;
+  animation-delay: -40s;
+  transform-origin: 4vw 0vh;
+  box-shadow: -40vmin 0 5.964309466052033vmin currentColor;
+}
+
+.ball:nth-child(6) {
+  top: 77%;
+  left: 16%;
+  animation-duration: 31s;
+  animation-delay: -10s;
+  transform-origin: 18vw 4vh;
+  box-shadow: 40vmin 0 5.178483653434181vmin currentColor;
+}
+
+.ball:nth-child(7) {
+  top: 22%;
+  left: 17%;
+  animation-duration: 55s;
+  animation-delay: -6s;
+  transform-origin: 1vw -23vh;
+  box-shadow: -40vmin 0 5.703026794398318vmin currentColor;
+}
+
+.ball:nth-child(8) {
+  top: 41%;
+  left: 47%;
+  animation-duration: 43s;
+  animation-delay: -28s;
+  transform-origin: 25vw -3vh;
+  box-shadow: 40vmin 0 5.196265905749415vmin currentColor;
+}
+
+/* Új stílusok a felhasználói foglalásokhoz */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-függőben {
+  background-color: #f39c12;
+  color: white;
+}
+
+.status-jóváhagyva {
+  background-color: #27ae60;
+  color: white;
+}
+
+.status-elutasítva {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-style: italic;
+}
+
+/* Süti figyelmeztetés stílusok */
+#cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 15px 20px;
+  z-index: 10000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#cookie-consent p {
+  margin: 0;
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+#cookie-consent a {
+  color: #4db6ac;
+  text-decoration: underline;
+}
+
+#cookie-consent-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#cookie-consent .btn-accept {
+  background: linear-gradient(90deg, #2ecc71, #9cff57);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#cookie-consent .btn-reject {
+  background: #e74c3c;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#cookie-consent .btn-settings {
+  background: #95a5a6;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  #cookie-consent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #cookie-consent-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #cookie-consent .btn-accept,
+  #cookie-consent .btn-reject,
+  #cookie-consent .btn-settings {
+    width: 100%;
+  }
+}
