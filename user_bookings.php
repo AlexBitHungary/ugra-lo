@@ -59,34 +59,34 @@ $bookings = $bookings->fetchAll();
 
         <div class="table-container">
             <table>
-                <thead>
-                    <tr>
-                        <th data-label="ID">ID</th>
-                        <th data-label="Játék">Játék</th>
-                        <th data-label="Dátum">Dátum</th>
-                        <th data-label="Állapot">Állapot</th>
-                        <th data-label="Megjegyzés">Megjegyzés</th>
-                    </tr>
-                </thead>
                 <tbody>
-                    <?php foreach ($bookings as $b): ?>
+                    <thead>
                         <tr>
-                            <td data-label="ID"><?= $b['id'] ?></td>
-                            <td data-label="Játék"><?= htmlspecialchars($b['game_name']) ?></td>
-                            <td data-label="Dátum"><?= htmlspecialchars($b['booking_date']) ?></td>
-                            <td data-label="Állapot">
-                                <span class="status-badge status-<?= strtolower($b['status']) ?>">
-                                    <?= htmlspecialchars($b['status']) ?>
-                                </span>
-                            </td>
-                            <td data-label="Megjegyzés"><?= htmlspecialchars($b['note']) ?></td>
+                            <th data-label="ID">ID</th>
+                            <th data-label="Játék">Játék</th>
+                            <th data-label="Dátum">Dátum</th>
+                            <th data-label="Állapot">Állapot</th>
+                            <th data-label="Megjegyzés">Megjegyzés</th>
                         </tr>
-                    <?php endforeach; ?>
-                    <?php if (empty($bookings)): ?>
-                        <tr>
-                            <td colspan="5" class="no-bookings">Nincsenek foglalások</td>
-                        </tr>
-                    <?php endif; ?>
+                        <?php foreach ($bookings as $b): ?>
+                            <tr>
+                                <td data-label="ID"><?= $b['id'] ?></td>
+                                <td data-label="Játék"><?= htmlspecialchars($b['game_name']) ?></td>
+                                <td data-label="Dátum"><?= htmlspecialchars($b['booking_date']) ?></td>
+                                <td data-label="Állapot">
+                                    <span class="status-badge status-<?= strtolower($b['status']) ?>">
+                                        <?= htmlspecialchars($b['status']) ?>
+                                    </span>
+                                </td>
+                                <td data-label="Megjegyzés"><?= htmlspecialchars($b['note']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <?php if (empty($bookings)): ?>
+                            <tr>
+                                <td colspan="5" class="no-bookings">Nincsenek foglalások</td>
+                            </tr>
+                        <?php endif; ?>
+                    </thead>
                 </tbody>
             </table>
         </div>

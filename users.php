@@ -50,25 +50,25 @@ $users = $users->fetchAll();
     <h1>Felhasználók listája</h1>
     <div class="table-container">
       <table class="users-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Felhasználónév</th>
-            <th>Email</th>
-            <th>Szerep</th>
-            <th>Regisztráció dátuma</th>
-          </tr>
-        </thead>
         <tbody>
-          <?php foreach ($users as $u): ?>
+          <thead>
             <tr>
-              <td><?= $u['id'] ?></td>
-              <td><?= htmlspecialchars($u['username']) ?></td>
-              <td><?= htmlspecialchars($u['email']) ?></td>
-              <td><?= htmlspecialchars($u['role']) ?></td>
-              <td><?= htmlspecialchars($u['created_at']) ?></td>
+              <th>ID</th>
+              <th>Felhasználónév</th>
+              <th>Email</th>
+              <th>Szerep</th>
+              <th>Regisztráció dátuma</th>
             </tr>
-          <?php endforeach; ?>
+            <?php foreach ($users as $u): ?>
+              <tr>
+                <td><?= $u['id'] ?></td>
+                <td><?= htmlspecialchars($u['username']) ?></td>
+                <td><?= htmlspecialchars($u['email']) ?></td>
+                <td><?= htmlspecialchars($u['role']) ?></td>
+                <td><?= htmlspecialchars($u['created_at']) ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </thead>
         </tbody>
       </table>
     </div>

@@ -76,6 +76,7 @@ $bookings = $pdo->query("
         <div class="table-container">
             <table>
                 <thead>
+                <tbody>
                     <tr>
                         <th data-label="ID">ID</th>
                         <th data-label="Játék">Játék</th>
@@ -85,38 +86,40 @@ $bookings = $pdo->query("
                         <th data-label="Megjegyzés">Megjegyzés</th>
                         <th data-label="Műveletek">Műveletek</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($bookings as $b): ?>
-                        <tr id="booking-row-<?= $b['id'] ?>">
-                            <td data-label="ID"><?= $b['id'] ?></td>
-                            <td data-label="Játék"><?= htmlspecialchars($b['game_name']) ?></td>
-                            <td data-label="Felhasználó"><?= htmlspecialchars($b['username']) ?></td>
-                            <td data-label="Dátum"><?= htmlspecialchars($b['booking_date']) ?></td>
-                            <td data-label="Állapot">
-                                <div class="inline-form">
-                                    <select name="status" class="status-select" data-booking-id="<?= $b['id'] ?>">
-                                        <option value="Függőben" <?= $b['status'] === 'Függőben' ? 'selected' : '' ?>>Függőben
-                                        </option>
-                                        <option value="Jóváhagyva" <?= $b['status'] === 'Jóváhagyva' ? 'selected' : '' ?>>
-                                            Jóváhagyva</option>
-                                        <option value="Elutasítva" <?= $b['status'] === 'Elutasítva' ? 'selected' : '' ?>>
-                                            Elutasítva</option>
-                                    </select>
-                                    <button type="button" class="btn btn-status btn-sm update-status-btn"
-                                        data-booking-id="<?= $b['id'] ?>">Mentés</button>
-                                </div>
-                            </td>
-                            <td data-label="Megjegyzés"><?= htmlspecialchars($b['note']) ?></td>
-                            <td data-label="Műveletek">
-                                <button type="button" class="btn btn-delete btn-sm delete-booking-btn"
-                                    data-booking-id="<?= $b['id'] ?>">Törlés</button>
-                            </td>
+
+                    <?php if (!empty($bookings)): ?>
+                        <?php foreach ($bookings as $b): ?>
+                            <tr id="booking-row-<?= $b['id'] ?>">
+                                <td data-label="ID"><?= $b['id'] ?></td>
+                                <td data-label="Játék"><?= htmlspecialchars($b['game_name']) ?></td>
+                                <td data-label="Felhasználó"><?= htmlspecialchars($b['username']) ?></td>
+                                <td data-label="Dátum"><?= htmlspecialchars($b['booking_date']) ?></td>
+                                <td data-label="Állapot">
+                                    <div class="inline-form">
+                                        <select name="status" class="status-select" data-booking-id="<?= $b['id'] ?>">
+                                            <option value="Függőben" <?= $b['status'] === 'Függőben' ? 'selected' : '' ?>>Függőben</option>
+                                            <option value="Jóváhagyva" <?= $b['status'] === 'Jóváhagyva' ? 'selected' : '' ?>>Jóváhagyva</option>
+                                            <option value="Elutasítva" <?= $b['status'] === 'Elutasítva' ? 'selected' : '' ?>>Elutasítva</option>
+                                        </select>
+                                        <button type="button" class="btn btn-status btn-sm update-status-btn" data-booking-id="<?= $b['id'] ?>">Mentés</button>
+                                    </div>
+                                </td>
+                                <td data-label="Megjegyzés"><?= htmlspecialchars($b['note']) ?></td>
+                                <td data-label="Műveletek">
+                                    <button type="button" class="btn btn-delete btn-sm delete-booking-btn" data-booking-id="<?= $b['id'] ?>">Törlés</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="7" class="no-bookings">Nincsenek foglalások</td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    </thead>
                 </tbody>
             </table>
         </div>
+
     </main>
 
     <script>
