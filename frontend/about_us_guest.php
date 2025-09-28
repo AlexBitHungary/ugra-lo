@@ -1,5 +1,6 @@
 <?php
-require 'db.php';
+
+require '../backend/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -8,7 +9,7 @@ require 'db.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rólunk - UGRÁ-LÓ</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>
@@ -24,7 +25,7 @@ require 'db.php';
   </div>
   <header>
     <div class="logo-container">
-      <img src="img/logo.png" class="logo" alt="Ugráló Logó">
+      <img src="../frontend/img/logo.png" class="logo" alt="Ugráló Logó">
     </div>
     <div class="header-content">
       <h1>UGRÁ-LÓ</h1>

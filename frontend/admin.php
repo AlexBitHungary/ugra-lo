@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../backend/db.php';
 
 // Csak admin láthatja
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -29,7 +29,7 @@ $bookings = $pdo->query("
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Foglalások</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>

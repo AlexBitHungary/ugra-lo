@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../backend/db.php';
 
 // Árfolyam lekérése EUR -> HUF
 $exchangeApiUrl = "https://v6.exchangerate-api.com/v6/4a6ae1726d915471cc92a2b3/latest/EUR";
@@ -14,12 +14,6 @@ if ($exchangeData && $exchangeData['result'] === 'success' && isset($exchangeDat
     $eurToHufRate = 370; // pl. 1 EUR = 370 HUF
 }
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
-
-//Játékok betöltése
 $games = $pdo->query("SELECT * FROM games")->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -28,12 +22,11 @@ $games = $pdo->query("SELECT * FROM games")->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Főoldal - UGRÁ-LÓ</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Főoldal - Ugráló</title>
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>
-
     <div class="background">
         <span class="ball"></span>
         <span class="ball"></span>
@@ -46,25 +39,18 @@ $games = $pdo->query("SELECT * FROM games")->fetchAll();
     </div>
     <header>
         <div class="logo-container">
-            <img src="img/logo.png" class="logo" alt="Ugráló Logó">
+            <img src="../frontend/img/logo.png" class="logo" alt="Ugráló Logó">
         </div>
         <div class="header-content">
             <h1>UGRÁ-LÓ</h1>
-            <h2>Üdv, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+            <h2>Üdvözlünk, kedves látogató!</h2>
+            <h2 class="guest_alert">A foglaláshoz bejelentkezés vagy regisztráció szükséges!</h2>
             <nav>
-                <a href="user_bookings.php"><span>📅</span> Saját foglalások</a>
-                <?php if ($_SESSION['role'] === 'admin'): ?>
-                    <a href="admin.php">Foglalások</a>
-                    <a href="admin_games.php">Játékok kezelése</a>
-                    <a href="add_game.php">+Új játék</a>
-                    <a href="users.php">Felhasználók</a>
-                    <a href="admin_register.php">Admin kezelés/regisztráció</a>
-                <?php endif; ?>
-                <a href="about_us.php">Rólunk</a>
-                <a href="logout.php"><span>🚪</span> Kijelentkezés</a>
+                <a href="login.php"><span>🚪</span> Bejelentkezés</a>
+                <a href="register.php">Regisztráció</a>
+                <a href="about_us_guest.php">Rólunk</a>
             </nav>
         </div>
-
     </header>
 
     <main>
@@ -88,10 +74,10 @@ $games = $pdo->query("SELECT * FROM games")->fetchAll();
                         <p class="description"><?php echo htmlspecialchars($game['description']); ?></p>
                         <p class="price"><?php echo number_format($priceHuf, 0, ',', ' '); ?> Ft</p>
                         <p class="price-eur">(Kb. <?php echo number_format($priceEur, 2, ',', ' '); ?> €)</p>
-                        <a href="booking.php?game_id=<?php echo $game['id']; ?>" class="btn">Foglalás</a>
                     </div>
                 </div>
             <?php endforeach; ?>
+
         </div>
     </main>
 
@@ -148,6 +134,7 @@ $games = $pdo->query("SELECT * FROM games")->fetchAll();
             setTimeout(showCookieConsent, 1000);
         });
     </script>
+
 </body>
 
 </html>

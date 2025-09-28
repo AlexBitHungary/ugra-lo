@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../backend/db.php';
 
 //Fiók regisztrálása
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regisztráció - UGRÁ-LÓ</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>

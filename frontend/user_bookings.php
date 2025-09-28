@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../backend/db.php';
 
 // Csak bejelentkezett felhasználók láthatják
 if (!isset($_SESSION['user_id'])) {
@@ -25,7 +25,7 @@ $bookings = $bookings->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saját foglalások - UGRÁ-LÓ</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>

@@ -1,6 +1,6 @@
 <?php
-require 'db.php';
-require 'utils/ImageUpload.php';
+require '../backend/db.php';
+require '../backend/utils/ImageUpload.php';
 
 // Csak admin férhet hozzá
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Új játék hozzáadása - UGRÁ-LÓ</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>

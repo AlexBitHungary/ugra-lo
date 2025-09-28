@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../backend/db.php';
 
 // Árfolyam lekérése EUR -> HUF
 $exchangeApiUrl = "https://v6.exchangerate-api.com/v6/4a6ae1726d915471cc92a2b3/latest/EUR";
@@ -29,7 +29,7 @@ $games = $pdo->query("SELECT * FROM games")->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Játékok kezelése - UGRÁ-LÓ</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>

@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../backend/db.php';
 
 // Ha nincs bejelentkezve, vissza a loginra
 if (!isset($_SESSION['user_id'])) {
@@ -61,7 +61,7 @@ $min_date = date('Y-m-d');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foglalás - <?php echo htmlspecialchars($game['name']); ?></title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>

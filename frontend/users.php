@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../backend/db.php';
 // Csak admin láthatja
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
   header('Location: login.php');
@@ -17,7 +17,7 @@ $users = $users->fetchAll();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin - Felhasználók</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>

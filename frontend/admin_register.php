@@ -1,5 +1,5 @@
 <?php
-require 'db.php'; // PDO kapcsolat
+require '../backend/db.php';
 
 // Flash üzenetek kiolvasása és ürítése
 $success = $_SESSION['success'] ?? '';
@@ -69,7 +69,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'register') {
     exit;
 }
 
-// --- Admin törlés ---
+// --- Felhasználó törlés ---
 if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     $key = $_POST['secret_key'] ?? '';
     $userId = $_POST['user_id'] ?? 0;
@@ -77,9 +77,10 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     if ($key !== $secret_key) {
         $_SESSION['error'] = "Hibás titkos kulcs!";
     } else {
-        $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id AND role = 'admin'");
+        // Törlés minden felhasználóra
+        $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
         $stmt->execute([':id' => $userId]);
-        $_SESSION['success'] = "Admin törölve.";
+        $_SESSION['success'] = "Felhasználó törölve.";
     }
     header('Location: admin_register.php');
     exit;
@@ -127,7 +128,7 @@ $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- EZ A KULCS! Nélküle minden kicsi marad -->
     <title>Admin kezelés</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../frontend/styles.css">
 </head>
 
 <body>
@@ -260,6 +261,7 @@ $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <input type="text" name="secret_key" placeholder="Titkos kulcs" required form="form-user-<?= $user['id'] ?>" class="admin-register-input">
 
                             <button type="submit" name="action" value="update" form="form-user-<?= $user['id'] ?>" class="admin-register-button btn-edit">Módosítás</button>
+                            <button type="submit" name="action" value="delete" form="form-user-<?= $user['id'] ?>" class="admin-register-button btn-delete" onclick="return confirm('Biztos törlöd ezt a fiókot?');">Törlés</button>
                             <button type="submit" name="action" value="toggle_role" form="form-user-<?= $user['id'] ?>" class="admin-register-button btn-toggle">Adminná emelés</button>
                         </td>
                     </tr>
