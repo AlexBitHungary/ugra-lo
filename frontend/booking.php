@@ -85,7 +85,7 @@ $min_date = date('Y-m-d');
             <a href="users.php">Felhasználók</a>
         <?php endif; ?>
         <a href="about_us.php">Rólunk</a>
-        <a href="logout.php"><span>🚪</span> Kijelentkezés</a>
+        <a href="../backend/logout.php"><span>🚪</span> Kijelentkezés</a>
     </nav>
     </header>
 

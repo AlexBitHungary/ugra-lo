@@ -55,7 +55,7 @@ $games = $pdo->query("SELECT * FROM games")->fetchAll();
                 <a href="admin_register.php">Admin kezelés/regisztráció</a>
             <?php endif; ?>
             <a href="about_us.php">Rólunk</a>
-            <a href="logout.php"><span>🚪</span> Kijelentkezés</a>
+            <a href="../backend/logout.php"><span>🚪</span> Kijelentkezés</a>
         </nav>
     </header>
 

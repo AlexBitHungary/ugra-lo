@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Sze 28. 19:50
+-- Létrehozás ideje: 2025. Sze 28. 21:21
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -48,7 +48,8 @@ INSERT INTO `bookings` (`id`, `user_id`, `game_id`, `booking_date`, `status`, `n
 (25, 3, 3, '2025-08-28', 'Törölve', '', '2025-08-23 09:52:34'),
 (27, 1, 22, '2025-09-17', 'Törölve', '', '2025-09-16 18:17:29'),
 (28, 1, 2, '2025-09-17', 'Törölve', '', '2025-09-16 18:18:30'),
-(29, 3, 5, '2025-09-28', 'Törölve', 'teszt\r\n', '2025-09-28 15:18:24');
+(29, 3, 5, '2025-09-28', 'Törölve', 'teszt\r\n', '2025-09-28 15:18:24'),
+(30, 3, 5, '2025-09-29', 'Függőben', 'Teszt', '2025-09-28 19:06:34');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT a táblához `games`
