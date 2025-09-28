@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Sze 16. 20:25
+-- Létrehozás ideje: 2025. Sze 28. 19:17
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -47,7 +47,8 @@ CREATE TABLE `bookings` (
 INSERT INTO `bookings` (`id`, `user_id`, `game_id`, `booking_date`, `status`, `note`, `created_at`) VALUES
 (25, 3, 3, '2025-08-28', 'Törölve', '', '2025-08-23 09:52:34'),
 (27, 1, 22, '2025-09-17', 'Törölve', '', '2025-09-16 18:17:29'),
-(28, 1, 2, '2025-09-17', 'Törölve', '', '2025-09-16 18:18:30');
+(28, 1, 2, '2025-09-17', 'Törölve', '', '2025-09-16 18:18:30'),
+(29, 3, 5, '2025-09-28', 'Törölve', 'teszt\r\n', '2025-09-28 15:18:24');
 
 -- --------------------------------------------------------
 
@@ -100,8 +101,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Toxicgamer13', 'sandorbence30@proton.me', '$2y$10$boKru70DN.is.nQ6dnF1D.eRv1eZiN1a1KWI1cAYyTyFQNZHHsWDu', 'user', '2025-08-12 09:32:49'),
-(3, 'admin', '', '$2y$10$RslMQCGwnXlnLOW1G25GQuS/29lFVUFuGozI3VtSNaSN6Q8Mw6XXy', 'admin', '2025-08-12 09:48:47');
+(1, 'Toxicgamer13', 'sandorbence30@proton.me', '$2y$10$.uWi.qaE96Yaf4DLWlmP2eQv3R9ouWHHmqmTj6JYpFzg5ZigVYzMW', 'user', '2025-08-12 09:32:49'),
+(3, 'admin', '', '$2y$10$RslMQCGwnXlnLOW1G25GQuS/29lFVUFuGozI3VtSNaSN6Q8Mw6XXy', 'admin', '2025-08-12 09:48:47'),
+(4, 'admin2', 'sandorbence31@proton.me', '$2y$10$p5ZXVY4MWH3ghVYxrt4WUOO/5e4lKKrEQT6P5ri4R8wjrQOatcSJG', 'admin', '2025-09-28 15:47:27');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -137,7 +139,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT a táblához `games`
@@ -149,7 +151,7 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Megkötések a kiírt táblákhoz

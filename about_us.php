@@ -35,13 +35,14 @@ if (!isset($_SESSION['user_id'])) {
     <div class="header-content">
       <h1>UGRÁ-LÓ</h1>
       <nav>
-        <a href="index.php">Vissza</a>
+        <a href="index.php">Főoldal</a>
         <a href="user_bookings.php"><span>📅</span> Saját foglalások</a>
         <?php if ($_SESSION['role'] === 'admin'): ?>
           <a href="admin.php">Foglalások</a>
           <a href="admin_games.php">Játékok kezelése</a>
           <a href="add_game.php">+Új játék</a>
           <a href="users.php">Felhasználók</a>
+          <a href="admin_register.php">Admin kezelés/regisztráció</a>
         <?php endif; ?>
         <a href="about_us.php" class="active">Rólunk</a>
         <a href="logout.php"><span>🚪</span> Kijelentkezés</a>

@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 // Felhasználó foglalásainak lekérése
 $bookings = $pdo->prepare("
-    SELECT b.id, g.name AS game_name, b.booking_date, b.status, b.note
+    SELECT b.id, g.name AS game_name, b.booking_date, b.created_at, b.status, b.note
     FROM bookings b
     JOIN games g ON b.game_id = g.id
     WHERE b.user_id = ? AND b.status != 'Törölve'
@@ -48,6 +48,7 @@ $bookings = $bookings->fetchAll();
                 <a href="admin_games.php">Játékok kezelése</a>
                 <a href="add_game.php">+Új játék</a>
                 <a href="users.php">Felhasználók</a>
+                <a href="admin_register.php">Admin kezelés/regisztráció</a>
             <?php endif; ?>
             <a href="about_us.php">Rólunk</a>
             <a href="logout.php"><span>🚪</span> Kijelentkezés</a>
@@ -65,6 +66,7 @@ $bookings = $bookings->fetchAll();
                             <th data-label="ID">ID</th>
                             <th data-label="Játék">Játék</th>
                             <th data-label="Dátum">Dátum</th>
+                            <th data-label="Foglalás dátuma">Foglalás dátuma</th>
                             <th data-label="Állapot">Állapot</th>
                             <th data-label="Megjegyzés">Megjegyzés</th>
                         </tr>
@@ -72,7 +74,8 @@ $bookings = $bookings->fetchAll();
                             <tr>
                                 <td data-label="ID"><?= $b['id'] ?></td>
                                 <td data-label="Játék"><?= htmlspecialchars($b['game_name']) ?></td>
-                                <td data-label="Dátum"><?= htmlspecialchars($b['booking_date']) ?></td>
+                                <td data-label="Dátum"><?= htmlspecialchars($b['created_at']) ?></td>
+                                <td data-label="Foglalás dátuma"><?= htmlspecialchars($b['booking_date']) ?></td>
                                 <td data-label="Állapot">
                                     <span class="status-badge status-<?= strtolower($b['status']) ?>">
                                         <?= htmlspecialchars($b['status']) ?>
@@ -83,7 +86,7 @@ $bookings = $bookings->fetchAll();
                         <?php endforeach; ?>
                         <?php if (empty($bookings)): ?>
                             <tr>
-                                <td colspan="5" class="no-bookings">Nincsenek foglalások</td>
+                                <td colspan="6" class="no-bookings">Nincsenek foglalások</td>
                             </tr>
                         <?php endif; ?>
                     </thead>

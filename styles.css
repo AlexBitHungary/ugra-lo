@@ -16,6 +16,9 @@ body {
   color: #333;
   padding: 15px;
   font-size: 1rem;
+  overflow-x: hidden; /* Megakadályozza a vízszintes görgetést */
+  width: 100%;
+  max-width: 100vw; /* Biztosítja, hogy ne lógjon ki */
 }
 
 iframe {
@@ -55,6 +58,10 @@ header {
   height: 60px;
   width: auto;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+h1{
+  text-align: center;
 }
 
 header h2 {
@@ -257,9 +264,9 @@ h3 {
 
 /* Admin felület */
 .admin-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Megakadályozza a túlcsordulást */
 }
 
 .admin-header {
@@ -416,12 +423,17 @@ h3 {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 12px;
   text-align: center;
+
+  margin: 0 auto;
 }
 
 table {
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
   border-collapse: collapse;
   margin-top: 8px;
+  table-layout: auto; /* Rugalmas cella méretezés */
 }
 
 table th,
@@ -430,7 +442,9 @@ table td {
   text-align: center;
   vertical-align: middle;
   font-size: 0.9rem;
-  border: 1px solid #ddd; /* Hozzáadtam border-t az áttekinthetőségért */
+  border: 1px solid #ddd;
+  word-wrap: break-word; /* Sortörés hosszú szövegeknél */
+  background-color: white;
 }
 
 table th {
@@ -485,32 +499,26 @@ table th {
 }
 
 /* ===== ADMIN REGISZTRÁCIÓ ===== */
-.admin-register-form,
-.admin-register-table {
-  max-width: 800px;
+.admin-register-form {
+  max-width: 500px; /* Az űrlap ne legyen túl széles */
   margin: 15px auto;
   background: #fff;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  text-align: center;
 }
 
-.admin_register_h2,
-.admin-register-form h2 {
+.admin_register_h2 {
   text-align: center;
   font-size: 1.3rem;
-  margin: 5px 0 12px;
+  margin: 15px 0;
   color: #243447;
   font-weight: 700;
 }
 
-.admin-register-input,
-.admin-register-table input,
-.admin-register-table select,
-.admin-register-table textarea {
+.admin-register-input {
   width: 100%;
   padding: 8px 10px;
   margin: 4px 0 8px;
@@ -519,6 +527,7 @@ table th {
   border-radius: 4px;
   background: #fbfcfd;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .admin-register-input::placeholder {
@@ -526,12 +535,9 @@ table th {
   font-size: 0.9rem;
 }
 
-.admin-register-button,
-.admin-register-table .btn-edit,
-.admin-register-table .btn-delete {
+.admin-register-button {
   display: inline-block;
-  width: 100%;
-  padding: 8px 12px;
+  padding: 10px 12px; /* Nagyobb gomb */
   font-size: 0.9rem;
   border-radius: 4px;
   font-weight: 600;
@@ -539,9 +545,6 @@ table th {
   box-sizing: border-box;
   margin: 4px 0;
   border: none;
-}
-
-.admin-register-button {
   background: #007bff;
   color: #fff;
 }
@@ -549,38 +552,11 @@ table th {
   background: #0056b3;
 }
 
-.admin-register-table .btn-edit {
-  background: #f39c12;
-  color: #fff;
-}
-.admin-register-table .btn-edit:hover {
-  background: #e67e22;
-}
-
-.admin-register-table .btn-delete {
-  background: #e74c3c;
-  color: #fff;
-}
-.admin-register-table .btn-delete:hover {
-  background: #c0392b;
-}
-
-.admin-register-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.admin-register-table th,
-.admin-register-table td {
-  padding: 8px 6px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 0.9rem;
-}
-
 .admin-register-success,
 .admin-register-error {
+  max-width: 500px; /* Illeszkedjen az űrlaphoz */
+  margin: 0 auto 12px auto;
   text-align: center;
-  margin-bottom: 12px;
   font-weight: bold;
   font-size: 0.9rem;
   padding: 8px;
@@ -604,12 +580,16 @@ table th {
   body {
     padding: 10px;
     font-size: 0.9rem;
+    overflow-x: hidden; /* Biztosítjuk, hogy ne legyen vízszintes görgetés */
   }
 
   .content {
-    width: 95%;
+    width: 100%;
+    max-width: 100%;
     font-size: 0.9rem;
     padding: 12px;
+    margin: 0 auto 15px auto;
+    overflow-x: hidden;
   }
 
   main iframe {
@@ -718,8 +698,9 @@ table th {
 
   table th,
   table td {
-    font-size: 0.85rem;
     padding: 6px 8px;
+    font-size: 0.85rem;
+    max-width: 200px; /* Maximum szélesség mobil nézetben */
   }
 
   .auth-container {
@@ -735,28 +716,24 @@ table th {
     font-size: 0.85rem;
   }
 
-  /* ADMIN REGISZTRÁCIÓ MOBIL NÉZET */
-  .admin-register-form,
-  .admin-register-table {
+  /* ===== ADMIN REGISZTRÁCIÓ MOBIL NÉZET (JAVÍTOTT) ===== */
+
+  .admin-register-form {
     padding: 12px 8px;
     margin: 10px auto;
     width: 100%;
   }
 
-  .admin_register_h2,
-  .admin-register-form h2 {
+  .admin_register_h2 {
     font-size: 1.1rem;
   }
 
-  .admin-register-input,
-  .admin-register-table input {
+  .admin-register-input {
     font-size: 0.9rem;
     padding: 8px;
   }
 
-  .admin-register-button,
-  .admin-register-table .btn-edit,
-  .admin-register-table .btn-delete {
+  .admin-register-button {
     font-size: 0.9rem;
     padding: 8px;
   }
@@ -764,188 +741,69 @@ table th {
   .admin-register-success,
   .admin-register-error {
     font-size: 0.9rem;
-  }
-
-  /* Admin regisztrációs táblázat mobil átalakítás */
-  .admin-register-table table {
-    min-width: 100%;
-    display: block;
-  }
-
-  .admin-register-table tr {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 10px;
-    background: #f9f9f9;
-  }
-
-  .admin-register-table td,
-  .admin-register-table th {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 4px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    text-align: left;
-    font-size: 0.85rem;
-  }
-
-  .admin-register-table td:last-child,
-  .admin-register-table th:last-child {
-    border-bottom: none;
-  }
-
-  .admin-register-table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    min-width: 80px;
-    margin-right: 10px;
-    font-size: 0.85rem;
-  }
-
-  .admin-register-table td:nth-child(1)::before {
-    content: "ID";
-  }
-  .admin-register-table td:nth-child(2)::before {
-    content: "Felhasználónév";
-  }
-  .admin-register-table td:nth-child(3)::before {
-    content: "Email";
-  }
-  .admin-register-table td:nth-child(4)::before {
-    content: "Jelszó / Kulcs";
-  }
-  .admin-register-table td:nth-child(5)::before {
-    content: "Műveletek";
-  }
-
-  .admin-register-table form {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .table-container table {
-    display: table; /* Visszaállítjuk a normál megjelenést */
     width: 100%;
   }
 
-  .table-container table thead {
-    display: table-header-group; /* Fejléc megjelenítése */
-  }
-
-  .table-container table tbody {
-    display: table-row-group;
-  }
-
-  .table-container table tr {
-    display: table-row;
-    margin-bottom: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .table-container table td {
-    display: table-cell;
-    text-align: center;
-    padding: 6px 8px;
-    position: static;
-    justify-content: normal;
-    padding-left: 8px;
-    font-size: 0.85rem;
-  }
-
-  /* Eltávolítjuk a ::before pseudo-elementeket */
-  .table-container table td::before {
-    content: none !important;
-    display: none !important;
-  }
-
-  /* Visszaállítjuk a normál megjelenést */
-  .table-container table,
-  .table-container table tbody,
-  .table-container table tr,
-  .table-container table td {
-    display: table;
-  }
-
-  .table-container table tr {
-    display: table-row;
-  }
-
-  .table-container table td {
-    display: table-cell;
-  }
-
-  /* Admin regisztrációs táblázat mobil nézet - JAVÍTOTT */
-  .admin-register-table table {
-    min-width: 100%;
-    display: table; /* Visszaállítjuk táblázatra */
-  }
-
-  .admin-register-table tr {
-    display: table-row; /* Visszaállítjuk sorra */
-    margin-bottom: 0;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    background: transparent;
-  }
-
-  .admin-register-table td,
-  .admin-register-table th {
-    display: table-cell; /* Visszaállítjuk cellára */
-    justify-content: normal;
-    align-items: normal;
-    padding: 6px 4px;
-    border: 1px solid #ddd; /* Visszaállítjuk a border-t */
-    text-align: center;
-    font-size: 0.85rem;
-  }
-
-  /* Eltávolítjuk a ::before pseudo-elementeket */
-  .admin-register-table td::before {
-    content: none !important;
-    display: none !important;
-  }
-
-  .admin-register-table th {
-    display: table-cell; /* Fejléc megjelenítése */
-    background-color: #f5f5f5;
-  }
-
-  .admin-register-table form {
-    display: block; /* Visszaállítjuk a form megjelenését */
-  }
-
-  /* Görgetés engedélyezése kis képernyőn */
+  /* A tároló div kapja meg a görgetési képességet */
   .admin-register-table {
-    overflow-x: auto;
+    overflow-x: auto; /* Vízszintes görgetés engedélyezése */
+    width: 100%;
+    max-width: 100vw;
+    -webkit-overflow-scrolling: touch; /* Simább görgetés iOS-en */
   }
 
+  /* A táblázatnak adunk egy minimális szélességet, hogy a tartalom ne essen össze */
   .admin-register-table table {
-    min-width: 600px; /* Minimum szélesség a görgetéshez */
+    width: 100%;
+    min-width: 800px; /* Ennél keskenyebb képernyőn jelenik meg a görgetősáv */
+    border-collapse: collapse;
+  }
+
+  .admin-register-table th,
+  .admin-register-table td {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    vertical-align: middle; /* Középre igazítás */
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  .admin-register-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+
+  /* A cellákon belüli elemek ne törjenek több sorba feleslegesen */
+  .admin-register-table input,
+  .admin-register-table .admin-register-button {
+    white-space: nowrap;
+  }
+
+  .admin-register-table td .admin-register-button {
+    display: block; /* A gombok egymás alá kerülnek a cellán belül */
+    width: 100%;
+    margin-bottom: 4px;
+    box-sizing: border-box; /* Fontos a helyes méretezéshez */
+  }
+
+  .admin-register-table td .admin-register-button:last-child {
+    margin-bottom: 0;
   }
 
   .inline-form {
-    flex-direction: row; /* Visszaállítjuk a form elemeket */
-    align-items: center;
-    width: auto;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
   }
 
   .inline-form .btn {
-    width: auto;
-    align-self: center;
+    width: 100%;
     font-size: 0.8rem;
+    padding: 6px 8px;
   }
 
   .status-select {
-    width: auto;
+    width: 100%;
     font-size: 0.85rem;
   }
 }
@@ -985,36 +843,32 @@ table th {
     font-size: 0.8rem;
   }
 
-  .admin-register-table table th,
-  .admin-register-table table td {
-    padding: 4px 6px;
-    font-size: 0.8rem;
-  }
-
   .admin-register-table table {
     min-width: 500px; /* Kisebb minimum szélesség */
   }
 
+  .admin-register-table th,
+  .admin-register-table td {
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    min-width: 70px; /* Kisebb cellák */
+  }
+
   /* Admin regisztráció extra kicsi képernyőkre */
-  .admin-register-form,
-  .admin-register-table {
+  .admin-register-form {
     padding: 10px 6px;
   }
 
-  .admin_register_h2,
-  .admin-register-form h2 {
+  .admin_register_h2 {
     font-size: 1rem;
   }
 
-  .admin-register-input,
-  .admin-register-table input {
+  .admin-register-input {
     font-size: 0.85rem;
     padding: 6px 8px;
   }
 
-  .admin-register-button,
-  .admin-register-table .btn-edit,
-  .admin-register-table .btn-delete {
+  .admin-register-button {
     font-size: 0.85rem;
     padding: 6px 8px;
   }

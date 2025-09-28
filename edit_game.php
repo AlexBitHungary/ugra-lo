@@ -105,13 +105,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <header>
         <nav>
-            <a href="index.php">Vissza</a>
+            <a href="admin_games.php">Vissza</a>
             <a href="user_bookings.php"><span>📅</span> Saját foglalások</a>
             <?php if ($_SESSION['role'] === 'admin'): ?>
                 <a href="admin.php">Foglalások</a>
-                <a href="admin_games.php" class="active">Játékok kezelése</a>
+                <a href="admin_games.php">Játékok kezelése</a>
                 <a href="add_game.php">+Új játék</a>
                 <a href="users.php">Felhasználók</a>
+                <a href="admin_register.php">Admin kezelés/regisztráció</a>
             <?php endif; ?>
             <a href="about_us.php">Rólunk</a>
             <a href="logout.php"><span>🚪</span> Kijelentkezés</a>

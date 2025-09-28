@@ -14,7 +14,7 @@ unset($_SESSION['message'], $_SESSION['error']);
 
 // Foglalások lekérése (nem töröltek)
 $bookings = $pdo->query("
-    SELECT b.id, g.name AS game_name, u.username, b.booking_date, b.status, b.note
+    SELECT b.id, g.name AS game_name, u.username, b.created_at,b.booking_date, b.status, b.note
     FROM bookings b
     JOIN users u ON b.user_id = u.id
     JOIN games g ON b.game_id = g.id
@@ -52,6 +52,7 @@ $bookings = $pdo->query("
                 <a href="admin_games.php">Játékok kezelése</a>
                 <a href="add_game.php">+Új játék</a>
                 <a href="users.php">Felhasználók</a>
+                <a href="admin_register.php">Admin kezelés/regisztráció</a>
             <?php endif; ?>
             <a href="about_us.php">Rólunk</a>
             <a href="logout.php"><span>🚪</span> Kijelentkezés</a>
@@ -79,11 +80,12 @@ $bookings = $pdo->query("
                 <tbody>
                     <tr>
                         <th data-label="ID">ID</th>
-                        <th data-label="Játék">Játék</th>
                         <th data-label="Felhasználó">Felhasználó</th>
+                        <th data-label="Játék">Játék</th>
                         <th data-label="Dátum">Dátum</th>
-                        <th data-label="Állapot">Állapot</th>
+                        <th data-label="Foglalás ideje">Foglalás ideje</th>
                         <th data-label="Megjegyzés">Megjegyzés</th>
+                        <th data-label="Állapot">Állapot</th>
                         <th data-label="Műveletek">Műveletek</th>
                     </tr>
 
@@ -91,9 +93,11 @@ $bookings = $pdo->query("
                         <?php foreach ($bookings as $b): ?>
                             <tr id="booking-row-<?= $b['id'] ?>">
                                 <td data-label="ID"><?= $b['id'] ?></td>
-                                <td data-label="Játék"><?= htmlspecialchars($b['game_name']) ?></td>
                                 <td data-label="Felhasználó"><?= htmlspecialchars($b['username']) ?></td>
-                                <td data-label="Dátum"><?= htmlspecialchars($b['booking_date']) ?></td>
+                                <td data-label="Játék"><?= htmlspecialchars($b['game_name']) ?></td>
+                                <td data-label="Dátum"><?= htmlspecialchars($b['created_at']) ?></td>
+                                <td data-label="Foglalás ideje"><?= htmlspecialchars($b['booking_date']) ?></td>
+                                <td data-label="Megjegyzés"><?= htmlspecialchars($b['note']) ?></td>
                                 <td data-label="Állapot">
                                     <div class="inline-form">
                                         <select name="status" class="status-select" data-booking-id="<?= $b['id'] ?>">
@@ -104,7 +108,6 @@ $bookings = $pdo->query("
                                         <button type="button" class="btn btn-status btn-sm update-status-btn" data-booking-id="<?= $b['id'] ?>">Mentés</button>
                                     </div>
                                 </td>
-                                <td data-label="Megjegyzés"><?= htmlspecialchars($b['note']) ?></td>
                                 <td data-label="Műveletek">
                                     <button type="button" class="btn btn-delete btn-sm delete-booking-btn" data-booking-id="<?= $b['id'] ?>">Törlés</button>
                                 </td>
@@ -112,7 +115,7 @@ $bookings = $pdo->query("
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="7" class="no-bookings">Nincsenek foglalások</td>
+                            <td colspan="8" class="no-bookings">Nincsenek foglalások</td>
                         </tr>
                     <?php endif; ?>
                     </thead>
